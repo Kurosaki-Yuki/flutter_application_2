@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 const String assetName = 'assets/icons/devrant_icon.svg';
 const String smileyName = 'assets/icons/smiley_icon.svg';
-const String sadName = 'assets/icons/sad_face_icon.svg';
+const String sadName = 'assets/icons/cry_face_icon.svg';
 Widget svg = SvgPicture.asset(
   assetName,
-  semanticsLabel: 'newIcon'
+  height: 35, width: 35,
 );
 
 class MyHomePage extends StatefulWidget {
@@ -50,13 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void _check(){
     if(_counter == 15){
       _victory = 'Victoria';
-      svg = SvgPicture.asset(smileyName);
+      svg = SvgPicture.asset(smileyName, height: 35, width: 35,);
     }else if(_counter == 10){
       _victory = 'Derrota';
-      svg = SvgPicture.asset(sadName);
+      svg = SvgPicture.asset(sadName, height: 35, width: 35,);
     }else if(_counter < 10){
       _victory = '';
-      svg = SvgPicture.asset(assetName);
+      svg = SvgPicture.asset(assetName, height: 35, width: 35,);
     }
   }
 
@@ -67,10 +67,32 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      persistentFooterButtons: [
+        Visibility(
+          maintainSize: true, 
+          maintainAnimation: true,
+          maintainState: true,
+          visible: false, 
+          child: ElevatedButton(
+            onPressed: _incrementCounter,
+            child: const Icon(Icons.add),
+          )
+        ),
+        Visibility(
+          maintainSize: true, 
+          maintainAnimation: true,
+          maintainState: true,
+          visible: false, 
+          child: ElevatedButton(
+            onPressed: _decrementCounter,
+            child: const Icon(Icons.remove),
+          )
+        )
+        ],
       body: Center(
         child:Card(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
