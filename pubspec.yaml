@@ -55,6 +55,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/icons/devrant_icon.svg
+    - assets/icons/smiley_icon.svg
+    - assets/icons/cry_face_icon.svg
   fonts:
   - family: KingdomHearts
     fonts:
