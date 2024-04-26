@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'test.dart';
 
 const String assetName = 'assets/icons/devrant_icon.svg';
 const String smileyName = 'assets/icons/smiley_icon.svg';
@@ -60,6 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void newScreen() {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const test()),
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,15 +118,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 _victory,
                 style: const TextStyle(fontSize: 30),
               ),
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   TextButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
                   TextButton(onPressed: _decrementCounter, child: Icon(Icons.remove)),
                   TextButton(onPressed: _restartCounter, child: Icon(Icons.restart_alt))
+                ]
+              ),
+              Row(  
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:[
+                  TextButton(onPressed: newScreen, child: const Text('test'))
                 ]
               ),
             ],
