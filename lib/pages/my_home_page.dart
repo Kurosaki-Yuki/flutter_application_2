@@ -11,55 +11,14 @@ Widget svg = SvgPicture.asset(
 );
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key});
 
-  final String title;
+  final String title = "Inicia sesión";
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String _victory = '';
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-
-      _check();
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if(_counter > 0){
-        _counter--;
-      }
-
-      _check();
-    });
-  }
-
-  void _restartCounter() {
-    setState(() {
-      _counter = 0;
-
-      _check();
-    });
-  }
-
-  void _check(){
-    if(_counter == 15){
-      _victory = 'Victoria';
-      svg = SvgPicture.asset(smileyName, height: 35, width: 35,);
-    }else if(_counter == 10){
-      _victory = 'Derrota';
-      svg = SvgPicture.asset(sadName, height: 35, width: 35,);
-    }else if(_counter < 10){
-      _victory = '';
-      svg = SvgPicture.asset(assetName, height: 35, width: 35,);
-    }
-  }
 
   void newScreen() {
   Navigator.push(
@@ -75,56 +34,29 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      persistentFooterButtons: [
-        Visibility(
-          maintainSize: true, 
-          maintainAnimation: true,
-          maintainState: true,
-          visible: false, 
-          child: ElevatedButton(
-            onPressed: _incrementCounter,
-            child: const Icon(Icons.add),
-          )
-        ),
-        Visibility(
-          maintainSize: true, 
-          maintainAnimation: true,
-          maintainState: true,
-          visible: false, 
-          child: ElevatedButton(
-            onPressed: _decrementCounter,
-            child: const Icon(Icons.remove),
-          )
-        )
-        ],
       body: Center(
         child:Card(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  svg,
-                  svg,
-                  svg,
-                ]
+              /*const Text( 
+                'Nombre de usuario:'
+              ),*/
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Nombre de usuario',
+                ),
               ),
-              Text(
-                '$_counter veces',
-                style: const TextStyle(fontSize: 30),
-              ),
-              Text(
-                _victory,
-                style: const TextStyle(fontSize: 30),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  TextButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
-                  TextButton(onPressed: _decrementCounter, child: Icon(Icons.remove)),
-                  TextButton(onPressed: _restartCounter, child: Icon(Icons.restart_alt))
-                ]
+              /*const Text( 
+                'Contraseña:'
+              ),*/
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Contraseña',
+                ),
               ),
               Row(  
                 mainAxisAlignment: MainAxisAlignment.center,
