@@ -35,28 +35,38 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child:Card(
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              /*const Text( 
-                'Nombre de usuario:'
-              ),*/
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Nombre de usuario',
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [          
+                  /*const Text( 
+                    'Nombre de usuario:'
+                  ),*/
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Nombre de usuario',
+                    ),
+                  ),
+                  
+                ],
               ),
-              /*const Text( 
-                'Contraseña:'
-              ),*/
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Contraseña',
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    /*const Text( 
+                      'Contraseña:'
+                    ),*/
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Contraseña',
+                      ),
+                    ),
+                  ],
               ),
               Row(  
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ]
               ),
             ],
-          ),
         ),
       ),
     );

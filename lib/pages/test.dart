@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'my_home_page.dart';
 
 
 
@@ -23,7 +22,15 @@ class _test extends State<test>{
         child: Card(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              const Row(
+                children: [
+                  Text(
+                    'Bienvenido de vuelta invocador'
+                  ),
+                ]
+              ),
               TextButton(onPressed: newScreen, child: const Text('volver'))
             ],
           ),
