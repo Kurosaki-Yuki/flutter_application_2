@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'test.dart';
-
-const String assetName = 'assets/icons/devrant_icon.svg';
-const String smileyName = 'assets/icons/smiley_icon.svg';
-const String sadName = 'assets/icons/cry_face_icon.svg';
-Widget svg = SvgPicture.asset(
-  assetName,
-  height: 35, width: 35,
-);
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -19,47 +10,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String _victory = '';
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-
-      _check();
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if(_counter > 0){
-        _counter--;
-      }
-
-      _check();
-    });
-  }
-
-  void _restartCounter() {
-    setState(() {
-      _counter = 0;
-
-      _check();
-    });
-  }
-
-  void _check(){
-    if(_counter == 15){
-      _victory = 'Victoria';
-      svg = SvgPicture.asset(smileyName, height: 35, width: 35,);
-    }else if(_counter == 10){
-      _victory = 'Derrota';
-      svg = SvgPicture.asset(sadName, height: 35, width: 35,);
-    }else if(_counter < 10){
-      _victory = '';
-      svg = SvgPicture.asset(assetName, height: 35, width: 35,);
-    }
-  }
 
   void newScreen() {
   Navigator.push(
@@ -75,8 +25,8 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      persistentFooterButtons: [
-        Visibility(
+      persistentFooterButtons: const [
+        /*Visibility(
           maintainSize: true, 
           maintainAnimation: true,
           maintainState: true,
@@ -95,40 +45,24 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _decrementCounter,
             child: const Icon(Icons.remove),
           )
-        )
+        )*/
         ],
       body: Center(
         child:Card(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  svg,
-                  svg,
-                  svg,
-                ]
-              ),
-              Text(
-                '$_counter veces',
-                style: const TextStyle(fontSize: 30),
-              ),
-              Text(
-                _victory,
-                style: const TextStyle(fontSize: 30),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  TextButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
-                  TextButton(onPressed: _decrementCounter, child: Icon(Icons.remove)),
-                  TextButton(onPressed: _restartCounter, child: Icon(Icons.restart_alt))
-                ]
-              ),
               Row(  
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
+                  Expanded(child: 
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Nombre de usuario',
+                      ),
+                    ),
+                  ),                 
                   TextButton(onPressed: newScreen, child: const Text('test'))
                 ]
               ),
